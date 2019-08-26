@@ -11,6 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('panel');
+// });
+
+Route::get('/', 'PanelController@index');
+Route::get('/integrate', 'PanelController@integrate');
+
+Route::get('/deletetwo', 'PanelController@deletetwo');
