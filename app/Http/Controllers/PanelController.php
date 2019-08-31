@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Phone_two;
-use App\User;
-use App\User_two;
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Models\User_two;
 
 class PanelController extends Controller
 {
@@ -18,20 +16,16 @@ class PanelController extends Controller
     }
 
     public function integrate(){
-        $users_one = User::all();
-        foreach ($users_one as $value) {
-            $user_two = new User_two();
-            $user_two->name = $value->name;
-            $user_two->save();
-        }
+        $user_one = User::all();
+        User_two::insert($user_one->toArray());
     }
+
     public function deletetwo(){
-        //Phone_two::truncate();
         try {
-            // $user = User_two::all();
-            // $user->delete();
-            User_two::truncate();
-            var_dump('444');
+            $users_two = User_two::all();
+            foreach ($users_two as $value) {
+                $value->delete();
+            }
         } catch (\Throwable $th) {
             return($th);
         }

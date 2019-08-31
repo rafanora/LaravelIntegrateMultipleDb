@@ -1,16 +1,16 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Phone extends Model
-{   
+class User extends Model
+{
     protected $connection = 'laravelconverterdb_one';
     public $timestamps = false;
 
-    public function User()
+    public function phones()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasMany('App\Phone');
     }
 }

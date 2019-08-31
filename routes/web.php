@@ -16,6 +16,6 @@
 // });
 
 Route::get('/', 'PanelController@index');
-Route::get('/integrate', 'PanelController@integrate');
+Route::post('/integrate', 'PanelController@integrate');
 
-Route::get('/deletetwo', 'PanelController@deletetwo');
+Route::post('/deletetwo', 'PanelController@deletetwo');

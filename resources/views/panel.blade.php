@@ -3,7 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/navbar-bottom/">
         <!-- Bootstrap core CSS -->
         <link href="{{ url('css/bootstrap.min.css') }}" rel="stylesheet">
         <!-- Ajax -->
@@ -52,40 +51,40 @@
     </head>
     <body>
         <div class="card" style="padding: 10px;">
-                <div>
-                    <h2>Integrate data to database ONE from database TWO</h2>
-                    <button type="button" class="btn btn-primary" onclick="integrateDB();">Transfer data</button>
-                    <button type="button" class="btn btn-primary" onclick="ClearTWO();">Clear Db TWO</button>
-                </div>
-                
-                <div class="split left">
-                    <div class="centered">
-                        <ul class="list-group">
-                            <li class="list-group-item active">Sum One Database={{ count($users_one) }}</li>
-                            @foreach ($users_one as $item)
-                                <li class="list-group-item" style="font-size: 8px;">ID: {{ $item->id }} - NAME: {{ $item->name }}</li>
-                            @endforeach
-                        </ul>
+                <div style="width: 100%; padding: 20px; background-color: powderblue">
+                    <div style="padding: 10px;">
+                        <h2>Integrate data to database ONE from database TWO</h2>
+                        <button type="button" class="btn btn-success" onclick="integrateDB();">Transfer data</button>
+                        <button type="button" class="btn btn-danger" onclick="ClearTWO();">Clear Db TWO</button>
+                    </div>
+                    <div class="card" style="padding: 10px; width: 50%; float: left">
+                        <div>
+                            <ul class="list-group">
+                                <li class="list-group-item active">Sum One Database={{ count($users_one) }}</li>
+                                @foreach ($users_one as $item)
+                                    <li class="list-group-item" style="font-size: 8px;">ID: {{ $item->id }} - NAME: {{ $item->name }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card" style="padding: 10px; width: 50%;">
+                        <div>
+                            <li class="list-group-item active">Sum One Database={{ count($users_two) }}</li>
+                            <ul class="list-group">
+                                @foreach ($users_two as $item)
+                                    <li class="list-group-item"  style="font-size: 8px;">{{ $item }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
                     </div>
                 </div>
-    
-                <div class="split right">
-                    <div class="centered">
-                        <h2>Sum two Database={{ count($users_two) }}</h2>
-                        <ul class="list-group">
-                            @foreach ($users_two as $item)
-                                <li class="list-group-item">{{ $item }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                </div>
-            </div>
 
             <script type="text/javascript">
                 function integrateDB(){
                     $.ajax({
-                        type: 'GET',
+                        type: 'POST',
                         url: 'integrate',
+                        data: { _token: '{{csrf_token()}}' },
                         success: function (data) {
                             document.location.reload(true);
                         },
@@ -97,8 +96,9 @@
 
                 function ClearTWO(){
                     $.ajax({
-                        type: 'GET',
+                        type: 'POST',
                         url: 'deletetwo',
+                        data: { _token: '{{csrf_token()}}' },
                         success: function (data) {
                             document.location.reload(true);
                         },
@@ -110,5 +110,4 @@
                 
             </script>
     </body>
-    
 </html>
