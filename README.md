@@ -2,6 +2,7 @@
 This project access two databases and integrate the data. To do this we are using migrations, seeders and factory.
 
 **Add this code in yout file .env
+
 /*REMEMBER TO USE THIS NAMES IN A DATABASE.PHP*/
 DB_CONNECTION=laravelconverterdb_one
 DB_HOST=127.0.0.1
