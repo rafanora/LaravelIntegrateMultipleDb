@@ -60,7 +60,7 @@
                     <div class="card" style="padding: 10px; width: 50%; float: left">
                         <div>
                             <ul class="list-group">
-                                <li class="list-group-item active">Sum One Database={{ count($users_one) }}</li>
+                                <li class="list-group-item active">Sum Database One={{ count($users_one) }}</li>
                                 @foreach ($users_one as $item)
                                     <li class="list-group-item" style="font-size: 8px;">ID: {{ $item->id }} - NAME: {{ $item->name }}</li>
                                 @endforeach
@@ -69,7 +69,7 @@
                     </div>
                     <div class="card" style="padding: 10px; width: 50%;">
                         <div>
-                            <li class="list-group-item active">Sum One Database={{ count($users_two) }}</li>
+                            <li class="list-group-item active">Sum Database Two={{ count($users_two) }}</li>
                             <ul class="list-group">
                                 @foreach ($users_two as $item)
                                     <li class="list-group-item"  style="font-size: 8px;">{{ $item }}</li>
